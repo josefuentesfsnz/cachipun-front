@@ -1,0 +1,8 @@
+<div class="nes-container with-title ">
+    <p class="title">PLAYER {{ numero }}</p>
+    <div class="nes-field">
+        
+        <label for="name_field">Name</label>
+        <input [formControl]="name" [class]=" !name.invalid ? 'nes-input' : 'nes-input is-error' " required>
+    </div>
+</div>

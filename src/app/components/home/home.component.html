@@ -1,0 +1,32 @@
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+        <div class="row">
+            <div class="col-md-6 mt-3">
+                <app-playerbox [numero]="1" (player_name)="player1( $event )"></app-playerbox>
+            </div>
+            <div class="col-md-6 mt-3">
+                <app-playerbox [numero]="2" (player_name)="player2( $event )"></app-playerbox>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-md-12" *ngIf="playerIsValid()">
+                <button type="button" routerLink="/game" class="nes-btn is-success w-100">
+                    <h1>START</h1>
+                </button>
+                <button type="button" routerLink="/custom" class="nes-btn is-primary w-100 mt-3">
+                    <h1>CUSTOM</h1>
+                </button>
+            </div>
+            <div class="col-md-12" *ngIf="!playerIsValid()">
+                <button type="button" class="nes-btn is-success is-disabled w-100">
+                    <h1>START</h1>
+                </button>
+                <button type="button" class="nes-btn is-primary is-disabled w-100 mt-3">
+                    <h1>CUSTOM</h1>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-2"></div>
+</div>

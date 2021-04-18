@@ -1,0 +1,27 @@
+<!-- INCIO DE SELECCION -->
+<div *ngIf="!isblocked">
+    <!-- SI NINGUN PLAYER TIENE SU MOVIMIENTO SELECCIONADO -->
+    <div *ngIf="!selecting" class="nes-container is-dark with-title is-centered" style="min-height:320px">
+        <p class="title">{{ playerName }} </p>
+        <p>Comenzar eleccion</p>
+        <div class="col-md-12">
+            <button type="button" (click)="iniciar()" class="nes-btn is-warning">Iniciar</button>
+        </div>
+        <p>El otro jugador no debe ver mientras escojes.</p>
+    </div>
+    <!-- SELECCIONAR OPCION -->
+    <div *ngIf="selecting" class="nes-container with-title is-centered" style="min-height:320px">
+        <p class="title">{{ playerName }} </p>
+        <p>Seleciona un movimiento</p>
+        <div class="row mt-3" *ngFor="let move of matchService.match.movements;">
+            <div class="col-md-12">
+                <button type="button" (click)="seleccionar(move.name)" class="nes-btn is-warning" style="min-width: 100%;">{{ move.name }}</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- BLOQUEO -->
+<div *ngIf="isblocked" class="nes-container is-dark with-title is-centered" style="min-height:320px">
+    <p class="title">{{ playerName }} </p>
+    <p>Esperanda un momento...</p>
+</div>

@@ -1,0 +1,21 @@
+<div class="nes-container with-title is-centered">
+    <p class="title">CUSTOM</p>
+    <!-- ADD -->
+    <div class="row">
+        <div class="col-md-4">
+            <div class="nes-field">
+                <label for="name_field">weapon</label>
+                <input type="text" id="name_field" [formControl]="weapon" class="nes-input">
+            </div>
+        </div>
+        <div class="col-md-4">
+            <label for="name_field">&nbsp;</label>
+            <button type="button" class="nes-btn is-success w-100" (click)="moveAdd()">
+                ADD
+            </button>
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+    <!-- LIST MOVEMENTS -->
+    <app-item [move]="move" *ngFor="let move of matchService.match.movements;"></app-item>
+</div>

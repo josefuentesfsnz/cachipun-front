@@ -11,6 +11,8 @@ import { ItemComponent } from './components/movement/item/item.component';
 import { GameComponent } from './components/game/game.component';
 import { SelectMovementComponent } from './components/game/select-movement/select-movement.component';
 import { AuthService } from './service/auth.service';
+import { HttpClientModule } from '@angular/common/http';
+import { AlertComponent } from './components/alert/alert.component';
 
 @NgModule({
   declarations: [
@@ -22,9 +24,11 @@ import { AuthService } from './service/auth.service';
     ItemComponent,
     GameComponent,
     SelectMovementComponent,
+    AlertComponent,
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,

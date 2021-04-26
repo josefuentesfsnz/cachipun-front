@@ -14,12 +14,12 @@ export class AuthGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    // if(this.matchService.match.player_one.length > 2 && this.matchService.match.player_two.length > 2){
-    //   return true;
-    // } else {
-    //   this.router.navigateByUrl('/');
-    // }
-    // return this.matchService.match.player_one.length > 2 && this.matchService.match.player_two.length > 2;
+    if(this.matchService.get().player_one.length > 2 && this.matchService.get().player_two.length > 2){
+      return true;
+    } else {
+      this.router.navigateByUrl('/');
+    }
+    return this.matchService.get().player_one.length > 2 && this.matchService.get().player_two.length > 2;
     return true;
   }
 

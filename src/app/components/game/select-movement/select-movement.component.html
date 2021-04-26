@@ -13,7 +13,7 @@
     <div *ngIf="selecting" class="nes-container with-title is-centered" style="min-height:320px">
         <p class="title">{{ playerName }} </p>
         <p>Seleciona un movimiento</p>
-        <div class="row mt-3" *ngFor="let move of matchService.match.movements;">
+        <div class="row mt-3" *ngFor="let move of matchService.get().movements;">
             <div class="col-md-12">
                 <button type="button" (click)="seleccionar(move.name)" class="nes-btn is-warning" style="min-width: 100%;">{{ move.name }}</button>
             </div>

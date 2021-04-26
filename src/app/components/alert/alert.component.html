@@ -1,0 +1,10 @@
+<!-- <button id="myBtn" (click)="open('titulo', 'mensaje')">Open Modal</button> -->
+<div id="myModal" class="modal" [style]=" _getShow() ? 'display: block;' : 'display: none;'">
+  <div class="modal-content">
+    <div class="nes-container with-title is-centered">
+      <p class="title">{{ alertservice.title }}</p>
+      <p>{{ alertservice.message }}</p>
+    </div>
+    <button type="button" (click)="close()" class="nes-btn is-success">Ok</button>
+  </div>
+</div>

@@ -1,8 +1,11 @@
+import { MovementModel } from './movement-model';
+import { RoundModel } from './round-model';
+
 export class MatchModel {
-    public id: string = '';
+    public _id: string = '';
     public winner: string = '';
     public type: string = '';
-    public movements: any[] = [
+    public movements: MovementModel[] = [
         { name: 'piedra', kills: 'tijera'},
         { name: 'tijera', kills: 'papel'},
         { name: 'papel', kills: 'piedra'}
@@ -10,5 +13,5 @@ export class MatchModel {
     public player_one: string = '';
     public player_two: string = '';
     public creation_date: Date = new Date();
-    public rounds: any[] = [];
+    public rounds: RoundModel[] = [];
 }

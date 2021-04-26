@@ -11,7 +11,7 @@ export class CustomComponent implements OnInit {
   constructor(
     private matchService: MatchService
   ) {
-    this.data = this.matchService.match;
+    this.data = this.matchService.get();
    }
 
   ngOnInit(): void {

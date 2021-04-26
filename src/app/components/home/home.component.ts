@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { MatchModel } from '../../models/match-model';
 import { MatchService } from '../../service/match.service';
 
 @Component({
@@ -13,16 +12,16 @@ export class HomeComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    this.matchService.match.player_one = '';
-    this.matchService.match.player_two = '';
+    this.matchService.get().player_one = '';
+    this.matchService.get().player_two = '';
   }
   player1( name: any ): void {
-    this.matchService.match.player_one = name;
+    this.matchService.get().player_one = name;
   }
   player2( name: any ): void {
-    this.matchService.match.player_two = name;
+    this.matchService.get().player_two = name;
   }
   playerIsValid() {
-    return this.matchService.match.player_one.length > 1 && this.matchService.match.player_two.length > 1;
+    return this.matchService.get().player_one.length > 1 && this.matchService.get().player_two.length > 1;
   }
 }

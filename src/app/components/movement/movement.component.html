@@ -17,5 +17,5 @@
         <div class="col-md-4"></div>
     </div>
     <!-- LIST MOVEMENTS -->
-    <app-item [move]="move" *ngFor="let move of matchService.match.movements;"></app-item>
+    <app-item [move]="move" *ngFor="let move of matchService.get().movements;"></app-item>
 </div>

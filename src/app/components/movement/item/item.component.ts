@@ -19,7 +19,7 @@ export class ItemComponent implements OnInit {
   }
   
   moveRemove(){
-    this.matchService.match.movements = this.matchService.match.movements.filter((m) => {
+    this.matchService.get().movements = this.matchService.get().movements.filter((m) => {
       if(this.move.name === m.name){
         return false;
       }
@@ -30,7 +30,7 @@ export class ItemComponent implements OnInit {
    * retorna las opciones disponibles 
    */
   _optFilter() {
-    return this.matchService.match.movements.filter((m) => {
+    return this.matchService.get().movements.filter((m) => {
       if(this.move.name === m.name){
         return false;
       }

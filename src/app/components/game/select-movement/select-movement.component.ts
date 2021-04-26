@@ -1,4 +1,5 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { AlertService } from 'src/app/service/alert.service';
 import { MatchService } from '../../../service/match.service';
 
 @Component({
@@ -7,27 +8,40 @@ import { MatchService } from '../../../service/match.service';
   styleUrls: ['./select-movement.component.css']
 })
 export class SelectMovementComponent implements OnInit {
-  @Input() isblocked: boolean = false;// bloquea la tarjeta
-  @Input() player: string = '';
-
-  @Output() selectInit: EventEmitter<boolean> = new EventEmitter();
-  @Output() moveSelected: EventEmitter<string> = new EventEmitter();
+  isblocked: boolean = false;// bloquea la tarjeta
   public playerName: string = '';
   public selecting: boolean = false;
+
+  @Input() player: string = '';
+
+  @Output() selectInit: EventEmitter<any> = new EventEmitter();
+  @Output() moveSelected: EventEmitter<any> = new EventEmitter();
   
   constructor(
     public matchService: MatchService
   ) { }
 
   ngOnInit(): void {
-    const playerTemp: any = this.matchService.match;
+    const playerTemp: any = this.matchService.get();
     this.playerName = playerTemp[this.player];
   }
   iniciar(): void {
-    this.selectInit.emit(true);
+    this.selectInit.emit(this.player);
     this.selecting = true;
   }
   seleccionar(moveName: string): void {
-    this.moveSelected.emit('');
+    this.isblocked = true;
+    this.moveSelected.emit({
+        player: this.player,
+        movement: moveName
+      });
+  }
+  bloquear() {
+    this.isblocked = true;
+  }
+  restart() {
+    this.isblocked = false;// bloquea la tarjeta
+    this.playerName = '';
+    this.selecting = false;
   }
 }

@@ -19,13 +19,13 @@ export class MovementComponent implements OnInit {
   moveAdd() {
     const name: string = this.weapon.value;
     if (name.length < 1 ) return;
-    if(this.matchService.match.movements.filter((m)=>{
+    if(this.matchService.get().movements.filter((m)=>{
       return m.name === name;
     }).length > 0){
       return;
     }
 
-    this.matchService.match.movements.push({ name, kills: ''});
+    this.matchService.get().movements.push({ name, kills: ''});
     this.weapon = new FormControl('');
   }
 }

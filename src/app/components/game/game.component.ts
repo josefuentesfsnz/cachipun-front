@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 import { AlertService } from 'src/app/service/alert.service';
 import { RoundModel } from '../../models/round-model';
 import { MatchService } from '../../service/match.service';
@@ -16,6 +17,7 @@ export class GameComponent implements OnInit {
   constructor(
     public matchService: MatchService,
     private alertService: AlertService,
+    private router: Router,
   ) {
   }
 
@@ -34,7 +36,6 @@ export class GameComponent implements OnInit {
   }
 
   selectedOption(event: any) {
-    console.log('end', event);
     if (event.player === 'player_two') {
       this.player1.isblocked = false;
     }
@@ -52,17 +53,18 @@ export class GameComponent implements OnInit {
     }
     if (this.matchService.moveKillTo(this.round.player_one_move) !== this.round.player_two_move
       && this.matchService.moveKillTo(this.round.player_two_move) !== this.round.player_one_move) {
-        this.alertService.open('Resultado', 'Empate');
+        this.round.winner_player = 'DRAW';
+        this.alertService.open('RESULT', 'DRAW');
     }
     //player 1 win
     if (this.matchService.moveKillTo(this.round.player_one_move) === this.round.player_two_move) {
-      this.alertService.open('Ganador',`${ this.matchService.get().player_one } WIN!`);
+      this.alertService.open('WINNER',`${ this.matchService.get().player_one } WIN!`);
       this.round.winner_player = 'player_one';
       this.round.winner_name = this.matchService.get().player_one;
     }
     //player 2 win
     if (this.matchService.moveKillTo(this.round.player_two_move) === this.round.player_one_move) {
-      this.alertService.open('Ganador',`${ this.matchService.get().player_two } WIN!`);
+      this.alertService.open('WINNER',`${ this.matchService.get().player_two } WIN!`);
       this.round.winner_player = 'player_two';
       this.round.winner_name = this.matchService.get().player_two;
     }
@@ -75,8 +77,12 @@ export class GameComponent implements OnInit {
     this.player2.restart();
   }
   endGame(){
+    if(this.matchService.get().rounds.length < 1 ){
+      return;
+    }
     this.matchService.save(this.matchService.get()).subscribe(data => {
       console.log(data);
+      this.router.navigate(['/game/result']);
     });
   }
 }

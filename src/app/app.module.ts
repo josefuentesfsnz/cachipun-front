@@ -13,6 +13,7 @@ import { SelectMovementComponent } from './components/game/select-movement/selec
 import { AuthService } from './service/auth.service';
 import { HttpClientModule } from '@angular/common/http';
 import { AlertComponent } from './components/alert/alert.component';
+import { ResultComponent } from './components/game/result/result.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { AlertComponent } from './components/alert/alert.component';
     GameComponent,
     SelectMovementComponent,
     AlertComponent,
+    ResultComponent,
   ],
   imports: [
     BrowserModule,

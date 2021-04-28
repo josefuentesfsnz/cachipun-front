@@ -12,8 +12,7 @@
     <div class="col-md-4">
         <div class="nes-select is-error">
             <select required id="error_select">
-                <option value="" disabled selected hidden>select</option>
-                <option value="{{ opt.name }}" *ngFor="let opt of _optFilter()">{{ opt.name }}</option>
+                <option value="{{ opt.name }}" [selected]="_moveKillTo(move.name) === opt.name ? true : null " *ngFor="let opt of _optFilter()">{{ opt.name }}</option>
             </select>
         </div>
     </div>

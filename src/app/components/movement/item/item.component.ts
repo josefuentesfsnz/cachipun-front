@@ -17,7 +17,9 @@ export class ItemComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  
+  _moveKillTo(move: string) {
+    return this.matchService.moveKillTo(move);
+  }
   moveRemove(){
     this.matchService.get().movements = this.matchService.get().movements.filter((m) => {
       if(this.move.name === m.name){

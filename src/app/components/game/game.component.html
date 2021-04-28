@@ -28,7 +28,7 @@
         </button>
     </div>
     <div class="col-md-4">
-        <button type="button" class="nes-btn is-success w-100" (click)="endGame()">
+        <button type="button" [class]=" (matchService.get().rounds.length < 1 ) ? 'nes-btn is-success is-disabled w-100' : 'nes-btn is-success w-100'" (click)="endGame()">
             <h1>END</h1>
         </button>
     </div>

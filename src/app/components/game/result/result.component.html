@@ -1,0 +1,60 @@
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+        <section class="nes-container">
+            <div class="row">
+                <div class="col-md-4">
+                    <a href="#" class="nes-badge">
+                        <span class="is-primary">{{ _getMatch().player_one | uppercase }}</span>
+                    </a>
+                </div>
+                <div class="col-md-4"></div>
+                <div class="col-md-4">
+                    <a href="#" class="nes-badge">
+                        <span class="is-primary">{{ _getMatch().player_two | uppercase }}</span>
+                    </a>
+                </div>
+            </div>
+            <section class="message-list">
+                <section class="message-right">
+                    <div class="row" *ngFor="let round of rounds">
+                        <div class="col-md-2">
+                            <div *ngIf="round.winner_player === 'player_one'">
+                                <p>WIN</p>
+                                <i class="nes-icon trophy is-large"></i>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div [class]=" round.winner_player === 'player_one' ? 'nes-balloon from-left' : 'nes-balloon from-right text-center' "
+                                style="min-width: 100%;">
+                                <p *ngIf="round.winner_player === 'player_one'">
+                                    {{ round.player_one_move }} kill to {{ round.player_two_move }}</p>
+                                <p *ngIf="round.winner_player === 'player_two'">
+                                    {{ round.player_two_move }} kill to {{ round.player_one_move }}</p>
+                                <p *ngIf="round.winner_player === 'DRAW'">
+                                    {{ round.winner_player }}</p>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div *ngIf="round.winner_player === 'player_two'">
+                                <p>WIN</p>
+                                <i class="nes-icon trophy is-large"></i>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </section>
+        </section>
+    </div>
+    <div class="col-md-2"></div>
+</div>
+<!-- BOTONES -->
+<div class="row mt-3">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+        <button type="button" routerLink="/home" class="nes-btn is-error w-100">
+            <h1>GO TO HOME</h1>
+        </button>
+    </div>
+    <div class="col-md-2"></div>
+</div>

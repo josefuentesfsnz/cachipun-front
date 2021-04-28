@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatchModel } from 'src/app/models/match-model';
 import { MatchService } from '../../service/match.service';
 
 @Component({
@@ -9,7 +10,8 @@ import { MatchService } from '../../service/match.service';
 export class HomeComponent implements OnInit {
   constructor(
     public matchService: MatchService
-    ) { }
+    ) {
+    }
 
   ngOnInit(): void {
     this.matchService.get().player_one = '';

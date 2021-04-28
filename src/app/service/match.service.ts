@@ -17,7 +17,7 @@ export class MatchService {
   get(): MatchModel { 
     return this.match;
   }
-  set(match: any) {
+  set(match: MatchModel) {
     this.match = match;
   }
   matchAddMovement(mov: MovementModel) {
@@ -32,18 +32,18 @@ export class MatchService {
    * @returns kills of movement
    */
   moveKillTo(move: string): string {
-    if(!move) {
+    if(!move) 
       return '';
-    }
+    
     const result = this.match.movements.filter( (m) => {
       return m.name === move;
-    })[0];
-
-    if( result) {
-      return result.kills;
+    });
+    if( result.length === 1 ) {
+      return result[0].kills;
     }
     return '';
   }
+
   save(match: MatchModel) {
     return this.clientHttp.post( `${ environment.APIURL }/match`, match);
     // return this.clientHttp.put( `${ environment.APIURL }/match?id=${ match.id }`, match);

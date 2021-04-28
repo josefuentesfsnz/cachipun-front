@@ -20,7 +20,7 @@ export class AuthGuard implements CanActivate {
       this.router.navigateByUrl('/');
     }
     return this.matchService.get().player_one.length > 2 && this.matchService.get().player_two.length > 2;
-    return true;
+    // return true;
   }
 
 }

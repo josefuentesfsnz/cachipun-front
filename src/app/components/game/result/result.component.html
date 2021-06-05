@@ -3,6 +3,17 @@
     <div class="col-md-8">
         <section class="nes-container">
             <div class="row">
+                <div class="col-md-2">
+                    <i *ngif="_getWinnerParty().player === 'player_one'" class="nes-icon trophy is-large"></i>
+                </div>
+                <div class="col-md-8">
+                    <h4>{{ _getWinnerParty().player_name }} wins</h4>
+                </div>
+                <div class="col-md-2">
+                    <i *ngif="_getWinnerParty().player === 'player_two'" class="nes-icon trophy is-large"></i>
+                </div>
+            </div>
+            <div class="row">
                 <div class="col-md-4">
                     <a href="#" class="nes-badge">
                         <span class="is-primary">{{ _getMatch().player_one | uppercase }}</span>
